@@ -6,8 +6,9 @@ public class Email {
     private String password;
     private String department;
     private String email;
-    private int mailboxCapacity;
+    private int mailboxCapacity = 500;
     private String altEmail;
+    private String companySuffix = "GoogleWaterCompany.com";
 
     //Constructor to receive the first and last name
     public Email(String firstName, String lastName) {
@@ -22,6 +23,10 @@ public class Email {
         //Call a method that returns a random password
         this.password = randomPassword(10);
         System.out.println("Your password is: " + this.password);
+
+        //Combine elements to generate email
+        email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department + "." + companySuffix;
+        System.out.println("Your email is: " + email);
     }
 
     //Ask for department
@@ -35,6 +40,7 @@ public class Email {
         else {return ""; }
     }
 
+
     //Generate random password
     private String randomPassword(int length) {
         String passwordSet = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789!@#$%";
@@ -46,9 +52,18 @@ public class Email {
         return new String(password);
     }
     //Set the mailbox capacity
-
+    public void setMailboxCapacity(int capacity) {
+        this.mailboxCapacity = capacity;
+    }
     //Set the alt email
+    public void setAltEmail(String altEmail) {
+        this.altEmail = altEmail;
+    }
 
     //Change password
+    public void changePassword(String password) {
+        this.password = password;
+    }
+
 
 }
